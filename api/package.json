@@ -1,0 +1,30 @@
+{
+  "name": "school-rest-api",
+  "version": "1.0.0",
+  "description": "A REST API created with Express for a school database",
+  "main": "app.js",
+  "scripts": {
+    "start": "nodemon ./app.js",
+    "seed": "cross-env DB_ENABLE_LOGGING=true node './seed'"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mmgolden/school-rest-api.git"
+  },
+  "keywords": [],
+  "author": "Melinda Golden",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^1.18.10"
+  },
+  "dependencies": {
+    "basic-auth": "^2.0.1",
+    "bcryptjs": "^2.4.3",
+    "cross-env": "^5.2.0",
+    "express": "^4.16.4",
+    "mongodb": "^3.2.3",
+    "mongoose": "^5.4.22",
+    "morgan": "^1.9.1",
+    "promise.prototype.finally": "^3.1.0"
+  }
+}
