@@ -4,6 +4,7 @@
 const express = require('express');
 const morgan = require('morgan');
 const mongoose = require('mongoose');
+const cors = require('cors');
 const usersRoute = require('./routes/users');
 const coursesRoute = require('./routes/courses');
 
@@ -26,6 +27,9 @@ const enableGlobalErrorLogging = process.env.ENABLE_GLOBAL_ERROR_LOGGING === 'tr
 
 // create the Express app
 const app = express();
+
+// Enable CORS
+app.use(cors());
 
 // Setup request body JSON parsing
 app.use(express.json());
