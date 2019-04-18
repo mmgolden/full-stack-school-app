@@ -18,8 +18,11 @@ module.exports = {
     "plugins": [
         "react"
     ],
+    "parser": "babel-eslint",
     "rules": {
         "react/jsx-filename-extension": 0,
-        "no-use-before-define": 0
+        "no-use-before-define": 0,
+        "no-console": 0,
+        "no-unused-vars": "warn",
     }
 };
