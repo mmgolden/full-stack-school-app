@@ -6,7 +6,13 @@ class App extends Component {
     courses: [],
   };
 
+  // Runs immediately after the App component is mounted
   componentDidMount() {
+    this.getCourses();
+  }
+
+  // Get the courses from the API
+  getCourses = () => {
     axios.get('http://localhost:5000/api/courses')
       .then((res) => {
         const courses = res.data;
@@ -18,11 +24,8 @@ class App extends Component {
   }
 
   render() {
-    const { courses } = this.state;
     return (
-      <ul>
-        {courses.map(course => <li>{course.title}</li>)}
-      </ul>
+      <div />
     );
   }
 }
