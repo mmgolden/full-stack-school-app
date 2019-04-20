@@ -20,6 +20,7 @@ module.exports = {
     ],
     "parser": "babel-eslint",
     "rules": {
+        "react/prop-types": 0,
         "react/jsx-filename-extension": 0,
         "no-use-before-define": 0,
         "no-console": 0,
