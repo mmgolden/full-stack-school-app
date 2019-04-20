@@ -1,9 +1,7 @@
-/**************** General ****************/
 body {
   font-family: 'Lato', sans-serif;
   font-size: 16px;
 }
-.container {
-  max-width: 1250px;
-  margin: 0 auto;
+a {
+  text-decoration: none;
 }

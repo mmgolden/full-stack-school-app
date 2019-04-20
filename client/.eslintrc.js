@@ -25,5 +25,6 @@ module.exports = {
         "no-use-before-define": 0,
         "no-console": 0,
         "no-unused-vars": "warn",
+        "no-underscore-dangle": 0,
     }
 };

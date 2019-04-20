@@ -1,31 +1,23 @@
 import React, { Component } from 'react';
-import axios from 'axios';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { faPlus, faUserPlus, faSignInAlt } from '@fortawesome/free-solid-svg-icons';
 
 import Header from './Header';
+import Courses from './Courses';
 
+// Font awesome library
+library.add(faPlus, faUserPlus, faSignInAlt);
+
+// Main container component
 class App extends Component {
   state = {};
 
-  // Runs immediately after the App component is mounted
-  componentDidMount() {
-    this.getCourses();
-  }
-
-  // Get the courses from the API
-  getCourses = () => {
-    axios.get('http://localhost:5000/api/courses')
-      .then((res) => {
-        const courses = res.data;
-        console.log('courses', courses);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }
-
   render() {
     return (
-      <Header />
+      <>
+        <Header />
+        <Courses />
+      </>
     );
   }
 }

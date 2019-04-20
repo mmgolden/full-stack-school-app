@@ -1,6 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
 
+/*
+  Flex container for content used like this:
+  <Flex [row || column]> child components go here </Flex>
+*/
 const FlexContainer = ({ children, className }) => (
   <div className={className}>
     {children}
