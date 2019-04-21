@@ -43,6 +43,7 @@ const Card = styled(CourseCard)`
   box-sizing: border-box;
   min-width: 300px;
   box-shadow: 0 2px 2px rgba(102,119,136,.3);
+  background: ${props => (props.newCourse ? theme.primaryColor : '#fff')};
   background: ${props => (props.newCourse ? theme.primaryGradient : '#fff')};
   align-items: ${props => (props.newCourse ? 'center' : 'flex-start')};
 

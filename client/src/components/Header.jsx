@@ -28,6 +28,7 @@ const Header = () => (
 );
 
 const Topbar = styled.div`
+  background: ${theme.primaryColor};
   background: ${theme.primaryGradient};
   padding: 20px 0;
   margin-bottom: 30px;
