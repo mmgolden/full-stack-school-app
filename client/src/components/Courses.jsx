@@ -22,7 +22,6 @@ class Courses extends Component {
       .then((res) => {
         const courses = res.data;
         this.setState({ courses });
-        console.log(courses);
       })
       .catch((error) => {
         console.log(error);

@@ -3,7 +3,8 @@ import { library } from '@fortawesome/fontawesome-svg-core';
 import { faPlus, faUserPlus, faSignInAlt } from '@fortawesome/free-solid-svg-icons';
 
 import Header from './Header';
-import Courses from './Courses';
+// import Courses from './Courses';
+import CourseDetail from './CourseDetail';
 
 // Font awesome library
 library.add(faPlus, faUserPlus, faSignInAlt);
@@ -16,7 +17,7 @@ class App extends Component {
     return (
       <>
         <Header />
-        <Courses />
+        <CourseDetail />
       </>
     );
   }
