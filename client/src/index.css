@@ -1,6 +1,8 @@
 body {
   font-family: 'Lato', sans-serif;
   font-size: 16px;
+  background: #F8F9FA;
+  color: #777;
 }
 a {
   text-decoration: none;
