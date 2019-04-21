@@ -36,7 +36,6 @@ const Topbar = styled.div`
   a {
     color: #fff;
     padding: 0 10px;
-    text-transform: uppercase;
     transition: color 0.3s;
 
     &:hover {
@@ -48,7 +47,6 @@ const Topbar = styled.div`
 const Logo = styled.h1`
   color: #fff;
   font-size: 1.5rem;
-  padding: 0 15px;
   margin: 0;
   font-weight: 700;
   text-transform: uppercase;
