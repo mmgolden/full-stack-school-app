@@ -6,8 +6,9 @@ import {
 
 import Header from './Header';
 // import Courses from './Courses';
-import CourseDetail from './CourseDetail';
+// import CourseDetail from './CourseDetail';
 // import UserSignIn from './UserSignIn';
+import UserSignUp from './UserSignUp';
 
 // Font awesome library
 library.add(faPlus, faUserPlus, faSignInAlt, faChevronLeft);
@@ -20,7 +21,7 @@ class App extends Component {
     return (
       <>
         <Header />
-        <CourseDetail />
+        <UserSignUp />
       </>
     );
   }

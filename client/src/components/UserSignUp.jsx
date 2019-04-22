@@ -6,16 +6,32 @@ import Container from './Container';
 import Flex from './Flex';
 import Button from './Button';
 
-// Provides the "Sign In" screen by rendering a form
-class UserSignIn extends Component {
+// Provides the "Sign Up" screen by rendering a form
+class UserSignUp extends Component {
   state = {};
 
   render() {
     return (
       <Container>
-        <SignInForm>
-          <h1>Sign In</h1>
+        <SignUpForm>
+          <h1>Sign Up</h1>
           <form>
+            <input
+              id="firstName"
+              name="firstName"
+              type="text"
+              placeholder="First Name"
+              value=""
+              aria-label="First Name"
+            />
+            <input
+              id="lastName"
+              name="lastName"
+              type="text"
+              placeholder="Last Name"
+              value=""
+              aria-label="Last Name"
+            />
             <input
               id="emailAddress"
               name="emailAddress"
@@ -32,23 +48,26 @@ class UserSignIn extends Component {
               value=""
               aria-label="Password"
             />
+            <input
+              id="confirmPassword"
+              name="confirmPassword"
+              type="password"
+              placeholder="Confirm Password"
+              value=""
+              aria-label="confirmPassword"
+            />
             <Flex row>
-              <FormButton buttonType="submit">Sign In</FormButton>
+              <FormButton buttonType="submit">Sign Up</FormButton>
               <FormButton buttonType="link" link="/courses" outline>Cancel</FormButton>
             </Flex>
           </form>
-          <p>
-            {'Don\'t have a user account? '}
-            <a href="/signup">Click here</a>
-            {' to sign up!'}
-          </p>
-        </SignInForm>
+        </SignUpForm>
       </Container>
     );
   }
 }
 
-const SignInForm = styled.div`
+const SignUpForm = styled.div`
   background: #fff;
   margin: 0 auto;
   max-width: 400px;
@@ -95,4 +114,4 @@ const FormButton = styled(Button)`
   margin-right: 15px;
 `;
 
-export default UserSignIn;
+export default UserSignUp;

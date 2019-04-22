@@ -11,13 +11,15 @@ const Header = () => (
   <Topbar>
     <Container>
       <Flex row spaceBetween center>
-        <Logo>Courses</Logo>
+        <a href="/courses">
+          <Logo>Courses</Logo>
+        </a>
         <nav>
-          <a className="signup" href="sign-up.html">
+          <a className="signup" href="/signup">
             <TopbarIcon icon="user-plus" size="sm" />
             Sign Up
           </a>
-          <a className="signin" href="sign-in.html">
+          <a className="signin" href="/signin">
             <TopbarIcon icon="sign-in-alt" size="sm" />
             Sign In
           </a>
