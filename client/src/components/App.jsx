@@ -7,6 +7,7 @@ import {
 import Header from './Header';
 // import Courses from './Courses';
 import CourseDetail from './CourseDetail';
+// import UserSignIn from './UserSignIn';
 
 // Font awesome library
 library.add(faPlus, faUserPlus, faSignInAlt, faChevronLeft);

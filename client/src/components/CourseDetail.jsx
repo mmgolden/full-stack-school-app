@@ -58,6 +58,7 @@ class CourseDetail extends Component {
         <Container>
           <CourseGrid>
             <CourseDescription>
+              {/* Course title */}
               <h4>Course</h4>
               <h3>{title}</h3>
               {/* Course owner */}
@@ -73,12 +74,13 @@ class CourseDetail extends Component {
               }
             </CourseDescription>
             <CourseDetails>
+              {/* Estimated time */}
               <h4>Estimated Time</h4>
               <Separator />
               <h3>{estimatedTime}</h3>
+              {/* Course materials */}
               <h4>Materials Needed</h4>
               <Separator />
-              {/* Course materials */}
               <ul>
                 {materialsNeeded
                   && formattedMaterials.map(material => (material.length > 0 ? <li key={material}>{material}</li> : ''))}
