@@ -23,7 +23,7 @@ const PageButton = ({
   } else if (buttonType === 'submit') {
     renderedButton = <button className={className} type="submit">{children}</button>;
   } else if (buttonType === 'link') {
-    renderedButton = <a className={className} href={link}>{children}</a>;
+    renderedButton = <a className={className} href={link} role="button">{children}</a>;
   }
 
   return (renderedButton);
