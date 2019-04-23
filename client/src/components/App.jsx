@@ -9,7 +9,8 @@ import Header from './Header';
 // import CourseDetail from './CourseDetail';
 // import UserSignIn from './UserSignIn';
 // import UserSignUp from './UserSignUp';
-import CreateCourse from './CreateCourse';
+// import CreateCourse from './CreateCourse';
+import UpdateCourse from './UpdateCourse';
 
 // Font awesome library
 library.add(faPlus, faUserPlus, faSignInAlt, faChevronLeft);
@@ -22,7 +23,7 @@ class App extends Component {
     return (
       <>
         <Header />
-        <CreateCourse />
+        <UpdateCourse />
       </>
     );
   }
