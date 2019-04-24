@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
@@ -11,18 +12,18 @@ const Header = () => (
   <Topbar>
     <Container>
       <Flex row spaceBetween center>
-        <a href="/courses">
+        <Link to="/">
           <Logo>Courses</Logo>
-        </a>
+        </Link>
         <nav>
-          <a className="signup" href="/signup">
+          <Link className="signup" to="/signup">
             <TopbarIcon icon="user-plus" size="sm" />
             Sign Up
-          </a>
-          <a className="signin" href="/signin">
+          </Link>
+          <Link className="signin" to="/signin">
             <TopbarIcon icon="sign-in-alt" size="sm" />
             Sign In
-          </a>
+          </Link>
         </nav>
       </Flex>
     </Container>

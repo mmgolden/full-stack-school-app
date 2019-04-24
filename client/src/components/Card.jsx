@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
@@ -12,7 +13,7 @@ const CourseCard = ({
   title,
   newCourse,
 }) => (
-  <a className={className} href={link}>
+  <Link className={className} to={link}>
     {/*  Conditionally render the course card or the new course card */}
     {newCourse
       ? (
@@ -28,7 +29,7 @@ const CourseCard = ({
         </>
       )
     }
-  </a>
+  </Link>
 );
 
 const Card = styled(CourseCard)`

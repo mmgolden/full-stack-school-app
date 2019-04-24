@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
@@ -12,7 +13,7 @@ const ActionBar = ({ id }) => (
   <TopActionBar>
     <Container>
       <Flex row spaceBetween center>
-        <BackButton href="/courses" role="button">
+        <BackButton to="/" role="button">
           <BackIcon icon="chevron-left" size="sm" />
           Return to List
         </BackButton>
@@ -31,7 +32,7 @@ const TopActionBar = styled.div`
   margin-bottom: 30px;
 `;
 
-const BackButton = styled.a`
+const BackButton = styled(Link)`
   margin-right: auto;
   color: ${theme.primaryColor};
   transition: color 0.3s;

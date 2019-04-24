@@ -55,7 +55,7 @@ class CreateCourse extends Component {
               </div>
               <Flex row>
                 <FormButton buttonType="submit">Create Course</FormButton>
-                <FormButton buttonType="link" link="/courses" outline>Cancel</FormButton>
+                <FormButton buttonType="link" link="/" outline>Cancel</FormButton>
               </Flex>
             </FormGrid>
           </form>

@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 import theme from '../theme';
@@ -23,7 +24,7 @@ const PageButton = ({
   } else if (buttonType === 'submit') {
     renderedButton = <button className={className} type="submit">{children}</button>;
   } else if (buttonType === 'link') {
-    renderedButton = <a className={className} href={link} role="button">{children}</a>;
+    renderedButton = <Link className={className} to={link} role="button">{children}</Link>;
   }
 
   return (renderedButton);

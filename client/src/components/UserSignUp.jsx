@@ -58,7 +58,7 @@ class UserSignUp extends Component {
             />
             <Flex row>
               <FormButton buttonType="submit">Sign Up</FormButton>
-              <FormButton buttonType="link" link="/courses" outline>Cancel</FormButton>
+              <FormButton buttonType="link" link="/" outline>Cancel</FormButton>
             </Flex>
           </form>
         </SignUpForm>
