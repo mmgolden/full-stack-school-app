@@ -5,13 +5,14 @@ import {
   faPlus, faUserPlus, faSignInAlt, faChevronLeft,
 } from '@fortawesome/free-solid-svg-icons';
 
-import Header from './Header';
 import Courses from './Courses';
 import CourseDetail from './CourseDetail';
 import UserSignIn from './UserSignIn';
 import UserSignUp from './UserSignUp';
 import CreateCourse from './CreateCourse';
 import UpdateCourse from './UpdateCourse';
+import UserSignOut from './UserSignOut';
+import NotFound from './NotFound';
 
 // Font awesome library
 library.add(faPlus, faUserPlus, faSignInAlt, faChevronLeft);
@@ -24,65 +25,14 @@ class App extends Component {
     return (
       <BrowserRouter>
         <Switch>
-          <Route
-            exact
-            path="/"
-            render={() => (
-              <>
-                <Header />
-                <Courses />
-              </>
-            )}
-          />
-          <Route
-            path="/courses/create"
-            render={() => (
-              <>
-                <Header />
-                <CreateCourse />
-              </>
-            )}
-          />
-          <Route
-            path="/courses/:id/update"
-            render={() => (
-              <>
-                <Header />
-                <UpdateCourse />
-              </>
-            )}
-          />
-          <Route
-            path="/courses/:id"
-            render={() => (
-              <>
-                <Header />
-                <CourseDetail />
-              </>
-            )}
-          />
-          <Route
-            path="/signin"
-            render={() => (
-              <>
-                <Header />
-                <UserSignIn />
-              </>
-            )}
-          />
-          <Route
-            path="/signup"
-            render={() => (
-              <>
-                <Header />
-                <UserSignUp />
-              </>
-            )}
-          />
-          <Route
-            path="/signout"
-            render={() => {}}
-          />
+          <Route exact path="/" component={Courses} />
+          <Route path="/courses/create" component={CreateCourse} />
+          <Route path="/courses/:id/update" component={UpdateCourse} />
+          <Route path="/courses/:id" component={CourseDetail} />
+          <Route path="/signin" component={UserSignIn} />
+          <Route path="/signup" component={UserSignUp} />
+          <Route path="/signout" component={UserSignOut} />
+          <Route component={NotFound} />
         </Switch>
       </BrowserRouter>
     );

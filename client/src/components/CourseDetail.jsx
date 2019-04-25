@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import axios from 'axios';
 
 import theme from '../theme';
+import Header from './Header';
 import Container from './Container';
 import ActionBar from './ActionBar';
 
@@ -54,6 +55,7 @@ class CourseDetail extends Component {
 
     return (
       <>
+        <Header />
         <ActionBar />
         <Container>
           <CourseGrid>

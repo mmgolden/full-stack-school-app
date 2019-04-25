@@ -22,6 +22,7 @@ module.exports = {
     "rules": {
         "react/prop-types": 0,
         "react/jsx-filename-extension": 0,
+        "react/no-unescaped-entities": 0,
         "no-use-before-define": 0,
         "no-console": 0,
         "no-unused-vars": "warn",

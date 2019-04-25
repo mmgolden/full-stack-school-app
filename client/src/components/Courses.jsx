@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
 
+import Header from './Header';
 import Container from './Container';
 import Card from './Card';
 
@@ -31,21 +32,24 @@ class Courses extends Component {
   render() {
     const { courses } = this.state;
     return (
-      <Container>
-        <CoursesGrid>
-          {/*  Display the courses */}
-          {courses.map(course => (
-            <Card
-              link={`/courses/${course._id}`}
-              label="Course"
-              title={course.title}
-              key={course._id}
-            />
-          ))}
-          {/*  New course card */}
-          <Card link="/courses/create" newCourse />
-        </CoursesGrid>
-      </Container>
+      <>
+        <Header />
+        <Container>
+          <CoursesGrid>
+            {/*  Display the courses */}
+            {courses.map(course => (
+              <Card
+                link={`/courses/${course._id}`}
+                label="Course"
+                title={course.title}
+                key={course._id}
+              />
+            ))}
+            {/*  New course card */}
+            <Card link="/courses/create" newCourse />
+          </CoursesGrid>
+        </Container>
+      </>
     );
   }
 }
