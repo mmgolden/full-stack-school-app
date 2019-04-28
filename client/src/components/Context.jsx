@@ -6,11 +6,9 @@ const Context = React.createContext();
 
 // Provides context for the app
 export class Provider extends Component {
-  state = {};
-
-  // componentDidMount() {
-  //   this.signIn('joe@smith.com', 'joepassword');
-  // }
+  state = {
+    user: {},
+  };
 
   /*
   * Authenticates the user
@@ -28,18 +26,35 @@ export class Provider extends Component {
       },
     })
       .then((res) => {
-        console.log(res.data);
+        this.setState({
+          user: {
+            ...res.data,
+            password,
+          },
+        });
       })
       .catch((error) => {
         console.log(error);
       });
   }
 
+  // Remove the authenticated user and password from the global state
+  signOut = () => {
+    this.setState({
+      user: {},
+    });
+  }
+
   render() {
     const { children } = this.props;
+    const { user } = this.state;
     return (
       <Context.Provider value={{
-        state: this.state,
+        user,
+        actions: {
+          signIn: this.signIn,
+          signOut: this.signOut,
+        },
       }}
       >
         {children}
