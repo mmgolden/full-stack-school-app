@@ -2,10 +2,10 @@ import React from 'react';
 import styled from 'styled-components';
 
 /*
-  Flex container for content
-
-  Usage:
-  <Flex [row || column] [spaceBetween || flexEnd] [center]> child components go here </Flex>
+* Flex container for content
+*
+* Usage:
+* <Flex [row || column] [spaceBetween || flexEnd] [center]> child components go here </Flex>
 */
 const FlexContainer = ({ children, className }) => (
   <div className={className}>

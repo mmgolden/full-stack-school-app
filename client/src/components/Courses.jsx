@@ -17,7 +17,10 @@ class Courses extends Component {
     this.getCourses();
   }
 
-  // Get the courses from the API
+  /*
+  * Gets the list of courses
+  * @returns {Array} Returns an array of course objects
+  */
   getCourses = () => {
     axios.get('http://localhost:5000/api/courses')
       .then((res) => {

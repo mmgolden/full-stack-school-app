@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-// Styling forms
+// Styles the forms
 const FormContainer = ({ children, className }) => (
   <div className={className}>
     {children}

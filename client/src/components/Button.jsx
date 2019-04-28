@@ -5,12 +5,12 @@ import styled from 'styled-components';
 import theme from '../theme';
 
 /*
-  Displays a button depending on the type
-
-  Usage:
-  <Button buttonType=["button" || "submit" || "link"] [link="/"] [outline]>
-    Button name goes here
-  </Button>
+* Displays a button depending on the type
+*
+* Usage:
+* <Button buttonType=["button" || "submit" || "link"] [link="/"] [outline]>
+*   Button name goes here
+* </Button>
 */
 const PageButton = ({
   children,

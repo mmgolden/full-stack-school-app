@@ -10,7 +10,7 @@ import ActionBar from './ActionBar';
 // Provides the "Course Detail" screen by retrieving the detail for a course
 class CourseDetail extends Component {
   state = {
-    course: [],
+    course: {},
   };
 
   // Runs immediately after the component is mounted
@@ -18,7 +18,11 @@ class CourseDetail extends Component {
     this.getCourse('57029ed4795118be119cc440');
   }
 
-  // Get the course from the API
+  /*
+  * Get the course details
+  * @param {String} id - The id for the course
+  * @returns {Object} Returns the course
+  */
   getCourse = (id) => {
     axios.get(`http://localhost:5000/api/courses/${id}`)
       .then((res) => {
@@ -31,13 +35,21 @@ class CourseDetail extends Component {
       });
   }
 
-  // Format the description to be multiple paragraphs
+  /*
+  * Format the description to be multiple paragraphs
+  * @param {String} description - The description for the course
+  * @returns {Array} Returns an array of the individual paragraphs
+  */
   formatDescription = (description) => {
     if (!description) return '';
     return description.split('\\n\\n');
   }
 
-  // Format the materials needed to be list items
+  /*
+  * Format the materials needed to be list items
+  * @param {String} materials - The materials for the course
+  * @returns {Array} Returns an array of the individual materials needed
+  */
   formatMaterials = (materials) => {
     if (!materials) return '';
     return materials.replace(/\n/ig, '').split('* ');
