@@ -5,6 +5,7 @@ import {
   faPlus, faUserPlus, faSignInAlt, faChevronLeft,
 } from '@fortawesome/free-solid-svg-icons';
 
+import PrivateRoute from './PrivateRoute';
 import Courses from './Courses';
 import CourseDetail from './CourseDetail';
 import UserSignIn from './UserSignIn';
@@ -26,7 +27,7 @@ class App extends Component {
       <BrowserRouter>
         <Switch>
           <Route exact path="/" component={Courses} />
-          <Route path="/courses/create" component={CreateCourse} />
+          <PrivateRoute path="/courses/create" component={CreateCourse} />
           <Route path="/courses/:id/update" component={UpdateCourse} />
           <Route path="/courses/:id" component={CourseDetail} />
           <Route path="/signin" component={UserSignIn} />
