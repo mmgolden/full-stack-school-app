@@ -24,7 +24,6 @@ class UserSignUp extends Component {
                 name="firstName"
                 type="text"
                 placeholder="First Name"
-                value=""
                 aria-label="First Name"
               />
               <input
@@ -32,7 +31,6 @@ class UserSignUp extends Component {
                 name="lastName"
                 type="text"
                 placeholder="Last Name"
-                value=""
                 aria-label="Last Name"
               />
               <input
@@ -40,7 +38,6 @@ class UserSignUp extends Component {
                 name="emailAddress"
                 type="text"
                 placeholder="Email Address"
-                value=""
                 aria-label="Email Address"
               />
               <input
@@ -48,7 +45,6 @@ class UserSignUp extends Component {
                 name="password"
                 type="password"
                 placeholder="Password"
-                value=""
                 aria-label="Password"
               />
               <input
@@ -56,7 +52,6 @@ class UserSignUp extends Component {
                 name="confirmPassword"
                 type="password"
                 placeholder="Confirm Password"
-                value=""
                 aria-label="confirmPassword"
               />
               <Flex row>

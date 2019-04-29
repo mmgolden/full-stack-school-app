@@ -27,7 +27,6 @@ class UpdateCourse extends Component {
                     name="title"
                     type="text"
                     placeholder="Course title..."
-                    value=""
                     aria-label="Title"
                   />
                   <p>By Joe Smith</p>
@@ -45,7 +44,6 @@ class UpdateCourse extends Component {
                     name="estimatedTime"
                     type="text"
                     placeholder="Hours"
-                    value=""
                     aria-label="Estimated Time"
                   />
                   <h4>Materials Needed</h4>
