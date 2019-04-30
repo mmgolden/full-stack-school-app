@@ -9,20 +9,30 @@ import Flex from './Flex';
 import Button from './Button';
 
 // Displays action buttons at the top of the page
-const ActionBar = ({ id }) => (
-  <TopActionBar>
-    <Container>
-      <Flex row spaceBetween center>
-        <BackButton to="/" role="button">
-          <BackIcon icon="chevron-left" size="sm" />
+const ActionBar = ({ authUser, courseOwner, id }) => {
+  let authUserId;
+  let courseOwnerId;
+  if (authUser) { authUserId = authUser._id; }
+  if (courseOwner) { courseOwnerId = courseOwner._id; }
+  return (
+    <TopActionBar>
+      <Container>
+        <Flex row spaceBetween center>
+          <BackButton to="/" role="button">
+            <BackIcon icon="chevron-left" size="sm" />
           Return to List
-        </BackButton>
-        <ActionButton link={`/courses/${id}/update`} buttonType="link">Update Course</ActionButton>
-        <ActionButton link={`/courses/${id}`} buttonType="link" outline>Delete Course</ActionButton>
-      </Flex>
-    </Container>
-  </TopActionBar>
-);
+          </BackButton>
+          {authUserId === courseOwnerId && (
+            <>
+              <ActionButton link={`/courses/${id}/update`} buttonType="link">Update Course</ActionButton>
+              <ActionButton link={`/courses/${id}`} buttonType="link" outline>Delete Course</ActionButton>
+            </>
+          )}
+        </Flex>
+      </Container>
+    </TopActionBar>
+  );
+};
 
 const TopActionBar = styled.div`
   background: #fff;

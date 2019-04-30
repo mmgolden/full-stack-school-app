@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
 
+import { Consumer } from './Context';
 import theme from '../theme';
 import Header from './Header';
 import Container from './Container';
@@ -68,7 +69,15 @@ class CourseDetail extends Component {
     return (
       <>
         <Header />
-        <ActionBar />
+        <Consumer>
+          {({ user: authUser }) => (
+            <ActionBar
+              authUser={authUser}
+              courseOwner={user}
+              id="57029ed4795118be119cc440"
+            />
+          )}
+        </Consumer>
         <Container>
           <CourseGrid>
             <CourseDescription>

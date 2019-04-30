@@ -70,8 +70,8 @@ const authenticateUser = (req, res, next) => {
 
 // GET handles returning the current authenticated user
 router.get('/', authenticateUser, (req, res, next) => {
-  const { firstName, lastName, emailAddress } = req.currentUser;
-  res.status(200).json({ firstName, lastName, emailAddress });
+  const { _id, firstName, lastName } = req.currentUser;
+  res.status(200).json({ _id, firstName, lastName });
 });
 
 module.exports = {

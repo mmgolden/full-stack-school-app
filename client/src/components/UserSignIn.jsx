@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
-import { Consumer } from './Context';
 
+import { Consumer } from './Context';
 import theme from '../theme';
 import Header from './Header';
 import Container from './Container';
