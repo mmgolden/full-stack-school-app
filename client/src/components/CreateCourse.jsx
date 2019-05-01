@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
+import axios from 'axios';
 
+import { Consumer } from './Context';
 import Header from './Header';
 import Container from './Container';
 import Flex from './Flex';
@@ -11,6 +13,40 @@ import Form from './Form';
 class CreateCourse extends Component {
   state = {};
 
+  // Title input ref
+  titleRef = React.createRef();
+
+  // Description text area ref
+  descRef = React.createRef();
+
+  // Estimate time input ref
+  timeRef = React.createRef();
+
+  // Materials text area ref
+  materialsRef = React.createRef();
+
+  createCourse = (emailAddress, password) => {
+    axios({
+      method: 'post',
+      url: 'http://localhost:5000/api/courses',
+      auth: {
+        username: emailAddress,
+        password,
+      },
+    })
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
+
+  handleSubmit = (event, emailAddress, password) => {
+    event.preventDefault();
+    this.createCourse(emailAddress, password);
+  }
+
   render() {
     return (
       <>
@@ -18,48 +54,59 @@ class CreateCourse extends Component {
         <Container>
           <CreateCourseForm>
             <h1>Create Course</h1>
-            <form>
-              <FormGrid>
-                <div>
-                  <h4>Course</h4>
-                  <input
-                    id="title"
-                    name="title"
-                    type="text"
-                    placeholder="Course title..."
-                    aria-label="Title"
-                  />
-                  <p>By Joe Smith</p>
-                  <textarea
-                    id="description"
-                    name="description"
-                    placeholder="Course description..."
-                    aria-label="Description"
-                  />
-                </div>
-                <div>
-                  <h4>Estimated Time</h4>
-                  <input
-                    id="estimatedTime"
-                    name="estimatedTime"
-                    type="text"
-                    placeholder="Hours"
-                    aria-label="Estimated Time"
-                  />
-                  <h4>Materials Needed</h4>
-                  <textarea
-                    id="materialsNeeded"
-                    name="materialsNeeded"
-                    placeholder="List materials..."
-                    aria-label="Materials Needed"
-                  />
-                </div>
-                <Flex row>
-                  <FormButton buttonType="submit">Create Course</FormButton>
-                  <FormButton buttonType="link" link="/" outline>Cancel</FormButton>
-                </Flex>
-              </FormGrid>
-            </form>
+            <Consumer>
+              {({ user }) => (
+                <form onSubmit={(event) => {
+                  this.handleSubmit(event, user.emailAddress, user.password);
+                }}
+                >
+                  <FormGrid>
+                    <div>
+                      <h4>Course</h4>
+                      <input
+                        id="title"
+                        name="title"
+                        type="text"
+                        placeholder="Course title..."
+                        aria-label="Title"
+                        ref={this.titleRef}
+                      />
+                      <p>By Joe Smith</p>
+                      <textarea
+                        id="description"
+                        name="description"
+                        placeholder="Course description..."
+                        aria-label="Description"
+                        ref={this.descRef}
+                      />
+                    </div>
+                    <div>
+                      <h4>Estimated Time</h4>
+                      <input
+                        id="estimatedTime"
+                        name="estimatedTime"
+                        type="text"
+                        placeholder="Hours"
+                        aria-label="Estimated Time"
+                        ref={this.timeRef}
+                      />
+                      <h4>Materials Needed</h4>
+                      <textarea
+                        id="materialsNeeded"
+                        name="materialsNeeded"
+                        placeholder="List materials..."
+                        aria-label="Materials Needed"
+                        ref={this.materialsRef}
+                      />
+                    </div>
+                    <Flex row>
+                      <FormButton buttonType="submit">Create Course</FormButton>
+                      <FormButton buttonType="link" link="/" outline>Cancel</FormButton>
+                    </Flex>
+                  </FormGrid>
+                </form>
+              )}
+            </Consumer>
           </CreateCourseForm>
         </Container>
       </>
