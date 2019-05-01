@@ -29,6 +29,7 @@ export class Provider extends Component {
         this.setState({
           user: {
             ...res.data,
+            emailAddress,
             password,
           },
         });
