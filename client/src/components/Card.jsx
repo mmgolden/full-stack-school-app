@@ -15,19 +15,17 @@ const CourseCard = ({
 }) => (
   <Link className={className} to={link}>
     {/*  Conditionally render the course card or the new course card */}
-    {newCourse
-      ? (
-        <h3>
-          <PlusIcon icon="plus" size="sm" />
+    {newCourse ? (
+      <h3>
+        <PlusIcon icon="plus" size="sm" />
           New Course
-        </h3>
-      )
-      : (
-        <>
-          <h4>{label}</h4>
-          <h3>{title}</h3>
-        </>
-      )
+      </h3>
+    ) : (
+      <>
+        <h4>{label}</h4>
+        <h3>{title}</h3>
+      </>
+    )
     }
   </Link>
 );
