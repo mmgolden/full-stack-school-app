@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import {
-  faPlus, faUserPlus, faSignInAlt, faChevronLeft,
+  faPlus, faUserPlus, faSignInAlt, faSignOutAlt, faChevronLeft,
 } from '@fortawesome/free-solid-svg-icons';
 
 import PrivateRoute from './PrivateRoute';
@@ -16,28 +16,22 @@ import UserSignOut from './UserSignOut';
 import NotFound from './NotFound';
 
 // Font awesome library
-library.add(faPlus, faUserPlus, faSignInAlt, faChevronLeft);
+library.add(faPlus, faUserPlus, faSignInAlt, faSignOutAlt, faChevronLeft);
 
 // Main container component
-class App extends Component {
-  state = {};
-
-  render() {
-    return (
-      <BrowserRouter>
-        <Switch>
-          <Route exact path="/" component={Courses} />
-          <PrivateRoute path="/courses/create" component={CreateCourse} />
-          <PrivateRoute path="/courses/:id/update" component={UpdateCourse} />
-          <Route path="/courses/:id" component={CourseDetail} />
-          <Route path="/signin" component={UserSignIn} />
-          <Route path="/signup" component={UserSignUp} />
-          <Route path="/signout" component={UserSignOut} />
-          <Route component={NotFound} />
-        </Switch>
-      </BrowserRouter>
-    );
-  }
-}
+const App = () => (
+  <BrowserRouter>
+    <Switch>
+      <Route exact path="/" component={Courses} />
+      <PrivateRoute path="/courses/create" component={CreateCourse} />
+      <PrivateRoute path="/courses/:id/update" component={UpdateCourse} />
+      <Route path="/courses/:id" component={CourseDetail} />
+      <Route path="/signin" component={UserSignIn} />
+      <Route path="/signup" component={UserSignUp} />
+      <Route path="/signout" component={UserSignOut} />
+      <Route component={NotFound} />
+    </Switch>
+  </BrowserRouter>
+);
 
 export default App;
