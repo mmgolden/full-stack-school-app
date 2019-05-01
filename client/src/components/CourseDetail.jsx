@@ -16,7 +16,8 @@ class CourseDetail extends Component {
 
   // Runs immediately after the component is mounted
   componentDidMount() {
-    this.getCourse('57029ed4795118be119cc440');
+    const { match } = this.props;
+    this.getCourse(match.params.id);
   }
 
   /*
@@ -74,7 +75,7 @@ class CourseDetail extends Component {
             <ActionBar
               authUser={authUser}
               courseOwner={user}
-              id="57029ed4795118be119cc440"
+              id={course._id}
             />
           )}
         </Consumer>
