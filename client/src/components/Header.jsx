@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
+import { Consumer } from './Context';
 import theme from '../theme';
 import Container from './Container';
 import Flex from './Flex';
@@ -15,16 +16,32 @@ const Header = () => (
         <Link to="/">
           <Logo>Courses</Logo>
         </Link>
-        <nav>
-          <Link className="signup" to="/signup">
-            <TopbarIcon icon="user-plus" size="sm" />
-            Sign Up
-          </Link>
-          <Link className="signin" to="/signin">
-            <TopbarIcon icon="sign-in-alt" size="sm" />
-            Sign In
-          </Link>
-        </nav>
+        <Consumer>
+          {({ user }) => (
+            <nav>
+              {user.firstName && user.lastName ? (
+                <>
+                  <span>{`Welcome ${user.firstName} ${user.lastName}!`}</span>
+                  <Link to="/signout">
+                    <TopbarIcon icon="sign-out-alt" size="sm" />
+                    Sign Out
+                  </Link>
+                </>
+              ) : (
+                <>
+                  <Link to="/signup">
+                    <TopbarIcon icon="user-plus" size="sm" />
+                    Sign Up
+                  </Link>
+                  <Link to="/signin">
+                    <TopbarIcon icon="sign-in-alt" size="sm" />
+                    Sign In
+                  </Link>
+                </>
+              )}
+            </nav>
+          )}
+        </Consumer>
       </Flex>
     </Container>
   </Topbar>
@@ -35,6 +52,11 @@ const Topbar = styled.div`
   background: ${theme.primaryGradient};
   padding: 20px 0;
   margin-bottom: 30px;
+
+  span {
+    color: #fff;
+    padding: 0 10px;
+  }
 
   a {
     color: #fff;
