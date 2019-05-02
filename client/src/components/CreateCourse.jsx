@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
+import { withRouter } from 'react-router-dom';
 
 import { Consumer } from './Context';
 import Header from './Header';
@@ -11,7 +12,12 @@ import Form from './Form';
 
 // Provides the "Create Course" screen by rendering a form
 class CreateCourse extends Component {
-  state = {};
+  state = {
+    title: '',
+    description: '',
+    estimatedTime: '',
+    materialsNeeded: '',
+  };
 
   // Title input ref
   titleRef = React.createRef();
@@ -25,7 +31,15 @@ class CreateCourse extends Component {
   // Materials text area ref
   materialsRef = React.createRef();
 
+  /*
+  * Creates a new course
+  * @param {String} emailAddress - The email address for the current user
+  * @param {String} password - The password for the current user
+  */
   createCourse = (emailAddress, password) => {
+    const {
+      title, description, estimatedTime, materialsNeeded,
+    } = this.state;
     axios({
       method: 'post',
       url: 'http://localhost:5000/api/courses',
@@ -33,15 +47,39 @@ class CreateCourse extends Component {
         username: emailAddress,
         password,
       },
+      data: {
+        title,
+        description,
+        estimatedTime,
+        materialsNeeded,
+      },
     })
       .then((res) => {
         console.log(res);
+        const { history } = this.props;
+        history.push('/');
       })
       .catch((error) => {
         console.log(error);
       });
   }
 
+  // Update the state based on user input
+  handleChange = () => {
+    this.setState({
+      title: this.titleRef.current.value,
+      description: this.descRef.current.value,
+      estimatedTime: this.timeRef.current.value,
+      materialsNeeded: this.materialsRef.current.value,
+    });
+  }
+
+  /*
+  * Handles the form submission
+  * @param {Object} event - The event object
+  * @param {String} emailAddress - The email address for the current user
+  * @param {String} password - The password for the current user
+  */
   handleSubmit = (event, emailAddress, password) => {
     event.preventDefault();
     this.createCourse(emailAddress, password);
@@ -70,6 +108,7 @@ class CreateCourse extends Component {
                         placeholder="Course title..."
                         aria-label="Title"
                         ref={this.titleRef}
+                        onChange={this.handleChange}
                       />
                       <p>By Joe Smith</p>
                       <textarea
@@ -78,6 +117,7 @@ class CreateCourse extends Component {
                         placeholder="Course description..."
                         aria-label="Description"
                         ref={this.descRef}
+                        onChange={this.handleChange}
                       />
                     </div>
                     <div>
@@ -89,6 +129,7 @@ class CreateCourse extends Component {
                         placeholder="Hours"
                         aria-label="Estimated Time"
                         ref={this.timeRef}
+                        onChange={this.handleChange}
                       />
                       <h4>Materials Needed</h4>
                       <textarea
@@ -97,6 +138,7 @@ class CreateCourse extends Component {
                         placeholder="List materials..."
                         aria-label="Materials Needed"
                         ref={this.materialsRef}
+                        onChange={this.handleChange}
                       />
                     </div>
                     <Flex row>
@@ -150,4 +192,4 @@ const FormButton = styled(Button)`
   margin-right: 15px;
 `;
 
-export default CreateCourse;
+export default withRouter(CreateCourse);
