@@ -17,6 +17,7 @@ class CreateCourse extends Component {
     description: '',
     estimatedTime: '',
     materialsNeeded: '',
+    error: {},
   };
 
   // Title input ref
@@ -54,13 +55,15 @@ class CreateCourse extends Component {
         materialsNeeded,
       },
     })
-      .then((res) => {
-        console.log(res);
+      .then(() => {
         const { history } = this.props;
         history.push('/');
       })
       .catch((error) => {
-        console.log(error);
+        console.log(error.response);
+        this.setState({
+          error: error.response,
+        });
       });
   }
 
@@ -86,6 +89,7 @@ class CreateCourse extends Component {
   }
 
   render() {
+    const { error } = this.state;
     return (
       <>
         <Header />
