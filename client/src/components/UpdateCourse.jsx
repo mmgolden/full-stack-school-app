@@ -58,7 +58,8 @@ class UpdateCourse extends Component {
         });
       })
       .catch((error) => {
-        console.log(error.response);
+        const { status, statusText, data: { message } } = error.response;
+        console.error(`${status} Error: ${statusText}, ${message}`);
       });
   }
 
@@ -91,7 +92,8 @@ class UpdateCourse extends Component {
         history.push(`/courses/${id}`);
       })
       .catch((error) => {
-        console.log(error.response);
+        const { status, statusText, data: { message } } = error.response;
+        console.error(`${status} Error: ${statusText}, ${message}`);
         this.setState({
           error: error.response,
         });

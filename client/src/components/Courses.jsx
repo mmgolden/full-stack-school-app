@@ -28,7 +28,8 @@ class Courses extends Component {
         this.setState({ courses });
       })
       .catch((error) => {
-        console.log(error.response);
+        const { status, statusText, data: { message } } = error.response;
+        console.error(`${status} Error: ${statusText}, ${message}`);
       });
   }
 

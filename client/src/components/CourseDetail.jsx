@@ -30,10 +30,10 @@ class CourseDetail extends Component {
       .then((res) => {
         const course = res.data;
         this.setState({ course });
-        console.log('course', course);
       })
       .catch((error) => {
-        console.log(error.response);
+        const { status, statusText, data: { message } } = error.response;
+        console.error(`${status} Error: ${statusText}, ${message}`);
       });
   }
 

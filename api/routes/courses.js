@@ -76,13 +76,17 @@ router.put('/:id', authenticateUser, (req, res, next) => {
   if (req.course) {
     let { course, body, currentUser } = req;
 
-    if (course.user.id == currentUser.id) {
-      course.updateOne(body, (err) => {
-        if(err) return next(err);
-        res.status(204).end();
-      });
+    if (body.title && body.description) {
+      if (course.user.id == currentUser.id) {
+        course.updateOne(body, (err) => {
+          if(err) return next(err);
+          res.status(204).end();
+        });
+      } else {
+        res.status(403).json({ message: 'Access denied' });
+      }
     } else {
-      res.status(403).json({ message: 'Access denied' });
+      res.status(400).json({ message: 'Incomplete data' });
     }
   } else {
     res.status(404).json({ message: 'Course not found' });

@@ -35,7 +35,8 @@ export class Provider extends Component {
         });
       })
       .catch((error) => {
-        console.log(error.response);
+        const { status, statusText, data: { message } } = error.response;
+        console.error(`${status} Error: ${statusText}, ${message}`);
       });
   }
 
