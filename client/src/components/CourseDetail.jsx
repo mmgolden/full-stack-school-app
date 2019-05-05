@@ -33,7 +33,7 @@ class CourseDetail extends Component {
         console.log('course', course);
       })
       .catch((error) => {
-        console.log(error);
+        console.log(error.response);
       });
   }
 

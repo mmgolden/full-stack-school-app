@@ -9,6 +9,7 @@ import Container from './Container';
 import Flex from './Flex';
 import Button from './Button';
 import Form from './Form';
+import Error from './Error';
 
 // Provides the "Create Course" screen by rendering a form
 class CreateCourse extends Component {
@@ -34,13 +35,13 @@ class CreateCourse extends Component {
 
   /*
   * Creates a new course
-  * @param {String} emailAddress - The email address for the current user
-  * @param {String} password - The password for the current user
+  * @param {Object} user - The current user
   */
-  createCourse = (emailAddress, password) => {
+  createCourse = (user) => {
     const {
       title, description, estimatedTime, materialsNeeded,
     } = this.state;
+    const { _id, emailAddress, password } = user;
     axios({
       method: 'post',
       url: 'http://localhost:5000/api/courses',
@@ -49,6 +50,7 @@ class CreateCourse extends Component {
         password,
       },
       data: {
+        user: _id,
         title,
         description,
         estimatedTime,
@@ -80,12 +82,22 @@ class CreateCourse extends Component {
   /*
   * Handles the form submission
   * @param {Object} event - The event object
-  * @param {String} emailAddress - The email address for the current user
-  * @param {String} password - The password for the current user
+  * @param {Object} user - The current user
   */
-  handleSubmit = (event, emailAddress, password) => {
+  handleSubmit = (event, user) => {
     event.preventDefault();
-    this.createCourse(emailAddress, password);
+    this.createCourse(user);
+  }
+
+  /*
+  * Shows a message if there is a validation error
+  * @returns {String} - The error message
+  */
+  showError = () => {
+    const { title, description } = this.state;
+    if (title === '') { return 'Please provide a value for "Title"'; }
+    if (description === '') { return 'Please provide a value for "Description"'; }
+    return null;
   }
 
   render() {
@@ -96,10 +108,11 @@ class CreateCourse extends Component {
         <Container>
           <CreateCourseForm>
             <h1>Create Course</h1>
+            <Error>{error.status === 400 && this.showError() }</Error>
             <Consumer>
               {({ user }) => (
                 <form onSubmit={(event) => {
-                  this.handleSubmit(event, user.emailAddress, user.password);
+                  this.handleSubmit(event, user);
                 }}
                 >
                   <FormGrid>

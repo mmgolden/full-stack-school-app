@@ -28,7 +28,7 @@ class Courses extends Component {
         this.setState({ courses });
       })
       .catch((error) => {
-        console.log(error);
+        console.log(error.response);
       });
   }
 
