@@ -17,10 +17,11 @@ const PageButton = ({
   className,
   buttonType = 'button',
   link,
+  action = () => {},
 }) => {
   let renderedButton;
   if (buttonType === 'button') {
-    renderedButton = <button className={className} type="button">{children}</button>;
+    renderedButton = <button className={className} type="button" onClick={action}>{children}</button>;
   } else if (buttonType === 'submit') {
     renderedButton = <button className={className} type="submit">{children}</button>;
   } else if (buttonType === 'link') {

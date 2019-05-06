@@ -9,7 +9,9 @@ import Flex from './Flex';
 import Button from './Button';
 
 // Displays action buttons at the top of the page
-const ActionBar = ({ authUser, courseOwner, id }) => {
+const ActionBar = ({
+  authUser, courseOwner, id, deleteCourse,
+}) => {
   let authUserId;
   let courseOwnerId;
   if (authUser) { authUserId = authUser._id; }
@@ -25,7 +27,13 @@ const ActionBar = ({ authUser, courseOwner, id }) => {
           {authUserId === courseOwnerId && (
             <>
               <ActionButton link={`/courses/${id}/update`} buttonType="link">Update Course</ActionButton>
-              <ActionButton link={`/courses/${id}`} buttonType="link" outline>Delete Course</ActionButton>
+              <ActionButton
+                buttonType="button"
+                outline
+                action={deleteCourse}
+              >
+                Delete Course
+              </ActionButton>
             </>
           )}
         </Flex>
