@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
+import ReactMarkdown from 'react-markdown';
 
 import { Consumer } from './Context';
 import theme from '../theme';
@@ -38,34 +39,35 @@ class CourseDetail extends Component {
   }
 
   /*
-  * Format the description to be multiple paragraphs
-  * @param {String} description - The description for the course
-  * @returns {Array} Returns an array of the individual paragraphs
+  * Delete the course
+  * @param {Object} user - The current user
+  * @param {String} id - The course ID
   */
-  formatDescription = (description) => {
-    if (!description) return '';
-    return description.split('\\n\\n');
-  }
-
-  /*
-  * Format the materials needed to be list items
-  * @param {String} materials - The materials for the course
-  * @returns {Array} Returns an array of the individual materials needed
-  */
-  formatMaterials = (materials) => {
-    if (!materials) return '';
-    return materials.replace(/\n/ig, '').split('* ');
+  deleteCourse = (user, id) => {
+    const { emailAddress, password } = user;
+    axios({
+      method: 'delete',
+      url: `http://localhost:5000/api/courses/${id}`,
+      auth: {
+        username: emailAddress,
+        password,
+      },
+    })
+      .then(() => {
+        const { history } = this.props;
+        history.push('/');
+      })
+      .catch((error) => {
+        const { status, statusText, data: { message } } = error.response;
+        console.error(`${status} Error: ${statusText}, ${message}`);
+      });
   }
 
   render() {
     const { course } = this.state;
     const {
-      title, description, estimatedTime, materialsNeeded,
+      _id, title, description, estimatedTime, materialsNeeded, user,
     } = course;
-    const { user } = course;
-
-    const formattedDesc = this.formatDescription(description);
-    const formattedMaterials = this.formatMaterials(materialsNeeded);
 
     return (
       <>
@@ -75,7 +77,8 @@ class CourseDetail extends Component {
             <ActionBar
               authUser={authUser}
               courseOwner={user}
-              id={course._id}
+              id={_id}
+              deleteCourse={() => this.deleteCourse(authUser, _id)}
             />
           )}
         </Consumer>
@@ -93,9 +96,7 @@ class CourseDetail extends Component {
                 </p>
               )}
               {/* Course description */}
-              {description
-                && formattedDesc.map(paragraph => <p key={paragraph}>{paragraph}</p>)
-              }
+              {description && <ReactMarkdown>{description}</ReactMarkdown>}
             </CourseDescription>
             <CourseDetails>
               {/* Estimated time */}
@@ -105,10 +106,7 @@ class CourseDetail extends Component {
               {/* Course materials */}
               <h4>Materials Needed</h4>
               <Separator />
-              <ul>
-                {materialsNeeded
-                  && formattedMaterials.map(material => (material.length > 0 ? <li key={material}>{material}</li> : ''))}
-              </ul>
+              {materialsNeeded && <ReactMarkdown>{materialsNeeded}</ReactMarkdown>}
             </CourseDetails>
           </CourseGrid>
         </Container>
