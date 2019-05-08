@@ -33,6 +33,12 @@ export class Provider extends Component {
             password,
           },
         });
+
+        const user = {
+          emailAddress,
+          password,
+        };
+        window.localStorage.setItem('user', JSON.stringify(user));
       })
       .catch((error) => {
         const { status, statusText, data: { message } } = error.response;
@@ -41,10 +47,12 @@ export class Provider extends Component {
   }
 
   // Remove the authenticated user and password from the global state
-  signOut = () => {
+  signOut = (props) => {
     this.setState({
       user: {},
     });
+    window.localStorage.removeItem('user');
+    props.history.push('/');
   }
 
   render() {

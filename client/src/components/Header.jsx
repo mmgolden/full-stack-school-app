@@ -8,6 +8,13 @@ import theme from '../theme';
 import Container from './Container';
 import Flex from './Flex';
 
+const isLoggedIn = user => user.firstName && user.lastName;
+const isStoredUser = () => {
+  const storedUser = window.localStorage.getItem('user');
+  if (storedUser) { return storedUser.emailAddress && storedUser.password; }
+  return null;
+};
+
 // Displays the top menu bar for the app
 const Header = () => (
   <Topbar>
@@ -19,7 +26,7 @@ const Header = () => (
         <Consumer>
           {({ user }) => (
             <nav>
-              {user.firstName && user.lastName ? (
+              {isLoggedIn(user) || isStoredUser() ? (
                 <>
                   <span>{`Welcome ${user.firstName} ${user.lastName}!`}</span>
                   <Link to="/signout">
