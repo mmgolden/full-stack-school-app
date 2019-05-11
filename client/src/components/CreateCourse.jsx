@@ -105,7 +105,7 @@ class CreateCourse extends Component {
     const { error } = this.state;
     return (
       <>
-        <Header />
+        <Header {...this.props} />
         <Container>
           <CreateCourseForm>
             <h1>Create Course</h1>

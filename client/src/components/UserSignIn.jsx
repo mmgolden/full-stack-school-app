@@ -46,7 +46,7 @@ class UserSignIn extends Component {
       <Consumer>
         {({ actions }) => (
           <>
-            <Header />
+            <Header {...this.props} />
             <Container>
               <SignInForm>
                 <h1>Sign In</h1>

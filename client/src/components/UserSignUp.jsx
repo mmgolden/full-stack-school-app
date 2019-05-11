@@ -115,7 +115,7 @@ class UserSignUp extends Component {
     const { error, differentPasswords } = this.state;
     return (
       <>
-        <Header />
+        <Header {...this.props} />
         <Container>
           <SignUpForm>
             <h1>Sign Up</h1>

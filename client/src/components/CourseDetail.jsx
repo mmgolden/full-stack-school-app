@@ -74,7 +74,7 @@ class CourseDetail extends Component {
 
     return (
       <>
-        <Header />
+        <Header {...this.props} />
         <Consumer>
           {({ user: authUser }) => (
             <ActionBar

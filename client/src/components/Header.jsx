@@ -9,7 +9,7 @@ import Container from './Container';
 import Flex from './Flex';
 
 // Displays the top menu bar for the app
-const Header = () => (
+const Header = ({ location }) => (
   <Topbar>
     <Container>
       <Flex row spaceBetween center>
@@ -24,18 +24,23 @@ const Header = () => (
                   <span>{`Welcome ${user.firstName} ${user.lastName}!`}</span>
                   <Link to="/signout">
                     <TopbarIcon icon="sign-out-alt" size="sm" />
-                      Sign Out
+                        Sign Out
                   </Link>
                 </>
               ) : (
                 <>
                   <Link to="/signup">
                     <TopbarIcon icon="user-plus" size="sm" />
-                      Sign Up
+                        Sign Up
                   </Link>
-                  <Link to="/signin">
+                  <Link
+                    to={{
+                      pathname: '/signin',
+                      state: { prevLocation: location ? location.pathname : null },
+                    }}
+                  >
                     <TopbarIcon icon="sign-in-alt" size="sm" />
-                      Sign In
+                        Sign In
                   </Link>
                 </>
               )}

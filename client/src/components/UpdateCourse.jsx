@@ -151,7 +151,7 @@ class UpdateCourse extends Component {
     } = this.state;
     return (
       <>
-        <Header />
+        <Header {...this.props} />
         <Container>
           <UpdateCourseForm>
             <h1>Update Course</h1>

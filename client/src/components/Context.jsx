@@ -44,7 +44,8 @@ export class Provider extends Component {
         }));
 
         const { history, location } = props;
-        history.push(location.state.prevLocation);
+        const path = location.state ? location.state.prevLocation : '/';
+        history.push(path);
       })
       .catch((error) => {
         handleError(error, props);

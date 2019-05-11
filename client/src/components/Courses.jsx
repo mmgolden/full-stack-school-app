@@ -37,7 +37,7 @@ class Courses extends Component {
     const { courses } = this.state;
     return (
       <>
-        <Header />
+        <Header {...this.props} />
         <Container>
           <CoursesGrid>
             {/*  Display the courses */}
