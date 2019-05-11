@@ -8,6 +8,7 @@ import Flex from './Flex';
 import Form from './Form';
 import Button from './Button';
 import Error from './Error';
+import { handleError } from '../helpers';
 
 // Provides the "Sign Up" screen by rendering a form
 class UserSignUp extends Component {
@@ -67,14 +68,10 @@ class UserSignUp extends Component {
         history.push('/');
       })
       .catch((error) => {
-        console.error(`${error.response.status} Error: ${error.response.statusText}, ${error.response.data.message}`);
         this.setState({
           error: error.response,
         });
-        if (error.response.status === 500) {
-          const { history } = this.props;
-          history.push('/error');
-        }
+        handleError(error, this.props);
       });
   }
 

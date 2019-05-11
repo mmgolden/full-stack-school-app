@@ -8,6 +8,7 @@ import theme from '../theme';
 import Header from './Header';
 import Container from './Container';
 import ActionBar from './ActionBar';
+import { handleError } from '../helpers';
 
 // Provides the "Course Detail" screen by retrieving the detail for a course
 class CourseDetail extends Component {
@@ -33,10 +34,11 @@ class CourseDetail extends Component {
         this.setState({ course });
       })
       .catch((error) => {
-        console.error(`${error.response.status} Error: ${error.response.statusText}, ${error.response.data.message}`);
-        const { history } = this.props;
-        if (error.response.status === 404) { history.push('/notfound'); }
-        if (error.response.status === 500) { history.push('/error'); }
+        handleError(error, this.props);
+        if (error.response) {
+          const { history } = this.props;
+          if (error.response.status === 404) { history.push('/notfound'); }
+        }
       });
   }
 
@@ -60,11 +62,7 @@ class CourseDetail extends Component {
         history.push('/');
       })
       .catch((error) => {
-        console.error(`${error.response.status} Error: ${error.response.statusText}, ${error.response.data.message}`);
-        if (error.response.status === 500) {
-          const { history } = this.props;
-          history.push('/error');
-        }
+        handleError(error, this.props);
       });
   }
 

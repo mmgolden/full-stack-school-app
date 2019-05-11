@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 
+import { handleError } from '../helpers';
+
 // Create context
 export const Context = React.createContext();
 
@@ -45,11 +47,7 @@ export class Provider extends Component {
         history.push(location.state.prevLocation);
       })
       .catch((error) => {
-        console.error(`${error.response.status} Error: ${error.response.statusText}, ${error.response.data.message}`);
-        if (error.response.status === 500) {
-          const { history } = props;
-          history.push('/error');
-        }
+        handleError(error, props);
       });
   }
 

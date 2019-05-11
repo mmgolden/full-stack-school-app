@@ -10,6 +10,7 @@ import Flex from './Flex';
 import Button from './Button';
 import Form from './Form';
 import Error from './Error';
+import { handleError } from '../helpers';
 
 // Provides the "Update Course" screen by rendering a form
 class UpdateCourse extends Component {
@@ -68,10 +69,11 @@ class UpdateCourse extends Component {
         }
       })
       .catch((error) => {
-        console.error(`${error.response.status} Error: ${error.response.statusText}, ${error.response.data.message}`);
-        const { history } = this.props;
-        if (error.response.status === 404) { history.push('/notfound'); }
-        if (error.response.status === 500) { history.push('/error'); }
+        handleError(error, this.props);
+        if (error.response) {
+          const { history } = this.props;
+          if (error.response.status === 404) { history.push('/notfound'); }
+        }
       });
   }
 
@@ -104,14 +106,10 @@ class UpdateCourse extends Component {
         history.push(`/courses/${id}`);
       })
       .catch((error) => {
-        console.error(`${error.response.status} Error: ${error.response.statusText}, ${error.response.data.message}`);
         this.setState({
           error: error.response,
         });
-        if (error.response.status === 500) {
-          const { history } = this.props;
-          history.push('/error');
-        }
+        handleError(error, this.props);
       });
   }
 

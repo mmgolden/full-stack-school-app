@@ -10,6 +10,7 @@ import Flex from './Flex';
 import Button from './Button';
 import Form from './Form';
 import Error from './Error';
+import { handleError } from '../helpers';
 
 // Provides the "Create Course" screen by rendering a form
 class CreateCourse extends Component {
@@ -62,14 +63,10 @@ class CreateCourse extends Component {
         history.push('/');
       })
       .catch((error) => {
-        console.error(`${error.response.status} Error: ${error.response.statusText}, ${error.response.data.message}`);
         this.setState({
           error: error.response,
         });
-        if (error.response.status === 500) {
-          const { history } = this.props;
-          history.push('/error');
-        }
+        handleError(error, this.props);
       });
   }
 

@@ -5,6 +5,7 @@ import axios from 'axios';
 import Header from './Header';
 import Container from './Container';
 import Card from './Card';
+import { handleError } from '../helpers';
 
 // Provides the "Courses" screen by retrieving the list of courses
 class Courses extends Component {
@@ -28,11 +29,7 @@ class Courses extends Component {
         this.setState({ courses });
       })
       .catch((error) => {
-        console.error(`${error.response.status} Error: ${error.response.statusText}, ${error.response.data.message}`);
-        if (error.response.status === 500) {
-          const { history } = this.props;
-          history.push('/error');
-        }
+        handleError(error, this.props);
       });
   }
 
