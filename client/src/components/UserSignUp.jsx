@@ -67,12 +67,11 @@ class UserSignUp extends Component {
         history.push('/');
       })
       .catch((error) => {
-        const { status, statusText, data: { message } } = error.response;
-        console.error(`${status} Error: ${statusText}, ${message}`);
+        console.error(`${error.response.status} Error: ${error.response.statusText}, ${error.response.data.message}`);
         this.setState({
           error: error.response,
         });
-        if (status === 500) {
+        if (error.response.status === 500) {
           const { history } = this.props;
           history.push('/error');
         }

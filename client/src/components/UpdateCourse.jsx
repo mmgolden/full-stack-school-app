@@ -68,11 +68,10 @@ class UpdateCourse extends Component {
         }
       })
       .catch((error) => {
-        const { status, statusText, data: { message } } = error.response;
-        console.error(`${status} Error: ${statusText}, ${message}`);
+        console.error(`${error.response.status} Error: ${error.response.statusText}, ${error.response.data.message}`);
         const { history } = this.props;
-        if (status === 404) { history.push('/notfound'); }
-        if (status === 500) { history.push('/error'); }
+        if (error.response.status === 404) { history.push('/notfound'); }
+        if (error.response.status === 500) { history.push('/error'); }
       });
   }
 
@@ -105,12 +104,11 @@ class UpdateCourse extends Component {
         history.push(`/courses/${id}`);
       })
       .catch((error) => {
-        const { status, statusText, data: { message } } = error.response;
-        console.error(`${status} Error: ${statusText}, ${message}`);
+        console.error(`${error.response.status} Error: ${error.response.statusText}, ${error.response.data.message}`);
         this.setState({
           error: error.response,
         });
-        if (status === 500) {
+        if (error.response.status === 500) {
           const { history } = this.props;
           history.push('/error');
         }

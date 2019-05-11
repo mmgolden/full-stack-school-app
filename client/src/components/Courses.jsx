@@ -28,9 +28,8 @@ class Courses extends Component {
         this.setState({ courses });
       })
       .catch((error) => {
-        const { status, statusText, data: { message } } = error.response;
-        console.error(`${status} Error: ${statusText}, ${message}`);
-        if (status === 500) {
+        console.error(`${error.response.status} Error: ${error.response.statusText}, ${error.response.data.message}`);
+        if (error.response.status === 500) {
           const { history } = this.props;
           history.push('/error');
         }
