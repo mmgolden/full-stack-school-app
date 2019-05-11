@@ -14,6 +14,8 @@ import CreateCourse from './CreateCourse';
 import UpdateCourse from './UpdateCourse';
 import UserSignOut from './UserSignOut';
 import NotFound from './NotFound';
+import Forbidden from './Forbidden';
+import UnhandledError from './UnhandledError';
 
 // Font awesome library
 library.add(faPlus, faUserPlus, faSignInAlt, faSignOutAlt, faChevronLeft, faArrowLeft);
@@ -29,6 +31,9 @@ const App = () => (
       <Route path="/signin" component={UserSignIn} />
       <Route path="/signup" component={UserSignUp} />
       <Route path="/signout" component={UserSignOut} />
+      <Route path="/forbidden" component={Forbidden} />
+      <Route path="/unhandlederror" component={UnhandledError} />
+      <Route path="/notfound" component={NotFound} />
       <Route component={NotFound} />
     </Switch>
   </BrowserRouter>

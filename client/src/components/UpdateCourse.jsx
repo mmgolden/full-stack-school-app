@@ -58,6 +58,8 @@ class UpdateCourse extends Component {
         });
       })
       .catch((error) => {
+        const { history } = this.props;
+        history.push('/notfound');
         const { status, statusText, data: { message } } = error.response;
         console.error(`${status} Error: ${statusText}, ${message}`);
       });
