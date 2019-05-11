@@ -8,13 +8,6 @@ import theme from '../theme';
 import Container from './Container';
 import Flex from './Flex';
 
-const isLoggedIn = user => user.firstName && user.lastName;
-const isStoredUser = () => {
-  const storedUser = window.localStorage.getItem('user');
-  if (storedUser) { return storedUser.emailAddress && storedUser.password; }
-  return null;
-};
-
 // Displays the top menu bar for the app
 const Header = () => (
   <Topbar>
@@ -24,30 +17,33 @@ const Header = () => (
           <Logo>Courses</Logo>
         </Link>
         <Consumer>
-          {({ user }) => (
-            <nav>
-              {isLoggedIn(user) || isStoredUser() ? (
-                <>
-                  <span>{`Welcome ${user.firstName} ${user.lastName}!`}</span>
-                  <Link to="/signout">
-                    <TopbarIcon icon="sign-out-alt" size="sm" />
-                    Sign Out
-                  </Link>
-                </>
-              ) : (
-                <>
-                  <Link to="/signup">
-                    <TopbarIcon icon="user-plus" size="sm" />
-                    Sign Up
-                  </Link>
-                  <Link to="/signin">
-                    <TopbarIcon icon="sign-in-alt" size="sm" />
-                    Sign In
-                  </Link>
-                </>
-              )}
-            </nav>
-          )}
+          {({ user }) => {
+            const { firstName, lastName } = user;
+            return (
+              <nav>
+                {firstName && lastName ? (
+                  <>
+                    <span>{`Welcome ${firstName} ${lastName}!`}</span>
+                    <Link to="/signout">
+                      <TopbarIcon icon="sign-out-alt" size="sm" />
+                      Sign Out
+                    </Link>
+                  </>
+                ) : (
+                  <>
+                    <Link to="/signup">
+                      <TopbarIcon icon="user-plus" size="sm" />
+                      Sign Up
+                    </Link>
+                    <Link to="/signin">
+                      <TopbarIcon icon="sign-in-alt" size="sm" />
+                      Sign In
+                    </Link>
+                  </>
+                )}
+              </nav>
+            );
+          }}
         </Consumer>
       </Flex>
     </Container>

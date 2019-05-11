@@ -7,7 +7,7 @@ export const Context = React.createContext();
 // Provides context for the app
 export class Provider extends Component {
   state = {
-    user: {},
+    user: JSON.parse(localStorage.getItem('user')),
   };
 
   /*
@@ -36,6 +36,7 @@ export class Provider extends Component {
 
         // Add the user to localStorage
         window.localStorage.setItem('user', JSON.stringify({
+          ...res.data,
           emailAddress,
           password,
         }));
