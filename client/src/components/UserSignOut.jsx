@@ -1,12 +1,20 @@
-import React from 'react';
+import React, { Component } from 'react';
+import { Redirect } from 'react-router-dom';
 
-import { Consumer } from './Context';
+import { Context } from './Context';
 
 // Signs out the authenticated user and redirects the user to the default route
-const UserSignOut = props => (
-  <Consumer>
-    {({ actions }) => actions.signOut(props)}
-  </Consumer>
-);
+class UserSignOut extends Component {
+  componentDidMount() {
+    const { actions } = this.context;
+    actions.signOut();
+  }
+
+  render() {
+    return (<Redirect to="/" />);
+  }
+}
+
+UserSignOut.contextType = Context;
 
 export default UserSignOut;

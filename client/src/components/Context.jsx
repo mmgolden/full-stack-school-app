@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 
 // Create context
-const Context = React.createContext();
+export const Context = React.createContext();
 
 // Provides context for the app
 export class Provider extends Component {
@@ -34,11 +34,11 @@ export class Provider extends Component {
           },
         });
 
-        const user = {
+        // Add the user to localStorage
+        window.localStorage.setItem('user', JSON.stringify({
           emailAddress,
           password,
-        };
-        window.localStorage.setItem('user', JSON.stringify(user));
+        }));
       })
       .catch((error) => {
         const { status, statusText, data: { message } } = error.response;
@@ -47,12 +47,11 @@ export class Provider extends Component {
   }
 
   // Remove the authenticated user and password from the global state
-  signOut = (props) => {
+  signOut = () => {
     this.setState({
       user: {},
     });
     window.localStorage.removeItem('user');
-    props.history.push('/');
   }
 
   render() {
