@@ -128,7 +128,7 @@ class CreateCourse extends Component {
                         ref={this.titleRef}
                         onChange={this.handleChange}
                       />
-                      <p>By Joe Smith</p>
+                      <p>{user && `By ${user.firstName} ${user.lastName}`}</p>
                       <textarea
                         id="description"
                         name="description"
