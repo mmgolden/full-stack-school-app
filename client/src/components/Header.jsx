@@ -17,33 +17,30 @@ const Header = () => (
           <Logo>Courses</Logo>
         </Link>
         <Consumer>
-          {({ user }) => {
-            const { firstName, lastName } = user;
-            return (
-              <nav>
-                {firstName && lastName ? (
-                  <>
-                    <span>{`Welcome ${firstName} ${lastName}!`}</span>
-                    <Link to="/signout">
-                      <TopbarIcon icon="sign-out-alt" size="sm" />
+          {({ user }) => (
+            <nav>
+              {user && user.firstName && user.lastName ? (
+                <>
+                  <span>{`Welcome ${user.firstName} ${user.lastName}!`}</span>
+                  <Link to="/signout">
+                    <TopbarIcon icon="sign-out-alt" size="sm" />
                       Sign Out
-                    </Link>
-                  </>
-                ) : (
-                  <>
-                    <Link to="/signup">
-                      <TopbarIcon icon="user-plus" size="sm" />
+                  </Link>
+                </>
+              ) : (
+                <>
+                  <Link to="/signup">
+                    <TopbarIcon icon="user-plus" size="sm" />
                       Sign Up
-                    </Link>
-                    <Link to="/signin">
-                      <TopbarIcon icon="sign-in-alt" size="sm" />
+                  </Link>
+                  <Link to="/signin">
+                    <TopbarIcon icon="sign-in-alt" size="sm" />
                       Sign In
-                    </Link>
-                  </>
-                )}
-              </nav>
-            );
-          }}
+                  </Link>
+                </>
+              )}
+            </nav>
+          )}
         </Consumer>
       </Flex>
     </Container>

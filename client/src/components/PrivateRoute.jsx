@@ -14,7 +14,7 @@ const PrivateRoute = ({ component: Component, path }) => (
     render={() => (
       <Consumer>
         {({ user }) => (
-          user.emailAddress && user.password ? (
+          user && user.emailAddress && user.password ? (
             <Component />
           ) : (
             <Redirect to="/signin" />
