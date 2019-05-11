@@ -9,6 +9,7 @@ import Header from './Header';
 import Container from './Container';
 import ActionBar from './ActionBar';
 import { handleError } from '../helpers';
+import Modal from './Modal';
 
 // Provides the "Course Detail" screen by retrieving the detail for a course
 class CourseDetail extends Component {
@@ -74,6 +75,7 @@ class CourseDetail extends Component {
 
     return (
       <>
+        <Modal />
         <Header {...this.props} />
         <Consumer>
           {({ user: authUser }) => (
