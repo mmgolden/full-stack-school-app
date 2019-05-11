@@ -16,7 +16,7 @@ export class Provider extends Component {
   * @param {String} password - The password for the user
   * @returns {Object} Returns the authenticated user
   */
-  signIn = (emailAddress, password) => {
+  signIn = (emailAddress, password, props) => {
     axios({
       method: 'get',
       url: 'http://localhost:5000/api/users',
@@ -44,6 +44,10 @@ export class Provider extends Component {
       .catch((error) => {
         const { status, statusText, data: { message } } = error.response;
         console.error(`${status} Error: ${statusText}, ${message}`);
+        if (status === 500) {
+          const { history } = props;
+          history.push('/error');
+        }
       });
   }
 

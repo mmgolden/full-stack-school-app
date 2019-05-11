@@ -72,6 +72,10 @@ class UserSignUp extends Component {
         this.setState({
           error: error.response,
         });
+        if (status === 500) {
+          const { history } = this.props;
+          history.push('/error');
+        }
       });
   }
 

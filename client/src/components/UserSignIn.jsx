@@ -39,7 +39,7 @@ class UserSignIn extends Component {
     const { emailAddress, password } = this.state;
     const { history } = this.props;
     event.preventDefault();
-    signIn(emailAddress, password);
+    signIn(emailAddress, password, this.props);
     history.push('/');
   }
 

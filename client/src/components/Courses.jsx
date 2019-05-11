@@ -30,6 +30,10 @@ class Courses extends Component {
       .catch((error) => {
         const { status, statusText, data: { message } } = error.response;
         console.error(`${status} Error: ${statusText}, ${message}`);
+        if (status === 500) {
+          const { history } = this.props;
+          history.push('/error');
+        }
       });
   }
 

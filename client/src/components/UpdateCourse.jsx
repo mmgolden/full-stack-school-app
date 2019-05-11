@@ -68,10 +68,11 @@ class UpdateCourse extends Component {
         }
       })
       .catch((error) => {
-        const { history } = this.props;
-        history.push('/notfound');
         const { status, statusText, data: { message } } = error.response;
         console.error(`${status} Error: ${statusText}, ${message}`);
+        const { history } = this.props;
+        if (status === 404) { history.push('/notfound'); }
+        if (status === 500) { history.push('/error'); }
       });
   }
 
@@ -109,6 +110,10 @@ class UpdateCourse extends Component {
         this.setState({
           error: error.response,
         });
+        if (status === 500) {
+          const { history } = this.props;
+          history.push('/error');
+        }
       });
   }
 

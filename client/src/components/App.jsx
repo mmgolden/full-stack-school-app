@@ -32,7 +32,7 @@ const App = () => (
       <Route path="/signup" component={UserSignUp} />
       <Route path="/signout" component={UserSignOut} />
       <Route path="/forbidden" component={Forbidden} />
-      <Route path="/unhandlederror" component={UnhandledError} />
+      <Route path="/error" component={UnhandledError} />
       <Route path="/notfound" component={NotFound} />
       <Route component={NotFound} />
     </Switch>

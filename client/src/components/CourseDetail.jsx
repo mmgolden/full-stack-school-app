@@ -33,10 +33,11 @@ class CourseDetail extends Component {
         this.setState({ course });
       })
       .catch((error) => {
-        const { history } = this.props;
-        history.push('/notfound');
         const { status, statusText, data: { message } } = error.response;
         console.error(`${status} Error: ${statusText}, ${message}`);
+        const { history } = this.props;
+        if (status === 404) { history.push('/notfound'); }
+        if (status === 500) { history.push('/error'); }
       });
   }
 
@@ -62,6 +63,10 @@ class CourseDetail extends Component {
       .catch((error) => {
         const { status, statusText, data: { message } } = error.response;
         console.error(`${status} Error: ${statusText}, ${message}`);
+        if (status === 500) {
+          const { history } = this.props;
+          history.push('/error');
+        }
       });
   }
 
