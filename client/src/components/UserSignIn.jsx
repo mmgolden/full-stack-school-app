@@ -37,10 +37,8 @@ class UserSignIn extends Component {
   */
   handleSubmit = (event, signIn) => {
     const { emailAddress, password } = this.state;
-    const { history } = this.props;
     event.preventDefault();
     signIn(emailAddress, password, this.props);
-    history.push('/');
   }
 
   render() {

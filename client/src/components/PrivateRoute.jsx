@@ -17,7 +17,11 @@ const PrivateRoute = ({ component: Component, path }) => (
           user && user.emailAddress && user.password ? (
             <Component />
           ) : (
-            <Redirect to="/signin" />
+            <Redirect to={{
+              pathname: '/signin',
+              state: { prevLocation: path },
+            }}
+            />
           )
         )}
       </Consumer>

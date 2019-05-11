@@ -40,11 +40,13 @@ export class Provider extends Component {
           emailAddress,
           password,
         }));
+
+        const { history, location } = props;
+        history.push(location.state.prevLocation);
       })
       .catch((error) => {
-        const { status, statusText, data: { message } } = error.response;
-        console.error(`${status} Error: ${statusText}, ${message}`);
-        if (status === 500) {
+        console.error(`${error.response.status} Error: ${error.response.statusText}, ${error.response.data.message}`);
+        if (error.response.status === 500) {
           const { history } = props;
           history.push('/error');
         }
