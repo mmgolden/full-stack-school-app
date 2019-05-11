@@ -2,7 +2,7 @@ import React from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import {
-  faPlus, faUserPlus, faSignInAlt, faSignOutAlt, faChevronLeft,
+  faPlus, faUserPlus, faSignInAlt, faSignOutAlt, faChevronLeft, faArrowLeft,
 } from '@fortawesome/free-solid-svg-icons';
 
 import PrivateRoute from './PrivateRoute';
@@ -16,7 +16,7 @@ import UserSignOut from './UserSignOut';
 import NotFound from './NotFound';
 
 // Font awesome library
-library.add(faPlus, faUserPlus, faSignInAlt, faSignOutAlt, faChevronLeft);
+library.add(faPlus, faUserPlus, faSignInAlt, faSignOutAlt, faChevronLeft, faArrowLeft);
 
 // Main container component
 const App = () => (
