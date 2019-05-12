@@ -15,6 +15,7 @@ import Modal from './Modal';
 class CourseDetail extends Component {
   state = {
     course: {},
+    show: false,
   };
 
   // Runs immediately after the component is mounted
@@ -67,24 +68,40 @@ class CourseDetail extends Component {
       });
   }
 
+  showModal = () => {
+    this.setState({ show: true });
+  };
+
+  hideModal = () => {
+    this.setState({ show: false });
+  };
+
   render() {
-    const { course } = this.state;
+    const { course, show } = this.state;
     const {
       _id, title, description, estimatedTime, materialsNeeded, user,
     } = course;
 
     return (
       <>
-        <Modal />
-        <Header {...this.props} />
         <Consumer>
           {({ user: authUser }) => (
-            <ActionBar
-              authUser={authUser}
-              courseOwner={user}
-              id={_id}
-              deleteCourse={() => this.deleteCourse(authUser, _id)}
-            />
+            <>
+              {show && (
+                <Modal
+                  message={`Are you sure you want to delete ${title}?`}
+                  action={() => this.deleteCourse(authUser, _id)}
+                  hideModal={() => this.hideModal()}
+                />
+              )}
+              <Header {...this.props} />
+              <ActionBar
+                authUser={authUser}
+                courseOwner={user}
+                id={_id}
+                showModal={() => this.showModal()}
+              />
+            </>
           )}
         </Consumer>
         <Container>

@@ -17,7 +17,7 @@ const PageButton = ({
   className,
   buttonType = 'button',
   link,
-  action = () => {},
+  action,
 }) => {
   let renderedButton;
   if (buttonType === 'button') {

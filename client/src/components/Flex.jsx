@@ -5,7 +5,9 @@ import styled from 'styled-components';
 * Flex container for content
 *
 * Usage:
-* <Flex [row || column] [spaceBetween || flexEnd] [center]> child components go here </Flex>
+* <Flex [row || column] [justifyCenter || spaceBetween || flexEnd] [center]>
+* child components go here
+* </Flex>
 */
 const FlexContainer = ({ children, className }) => (
   <div className={className}>
@@ -19,6 +21,7 @@ const Flex = styled(FlexContainer)`
   ${props => props.column && 'flex-direction: column;'};
   ${props => props.spaceBetween && 'justify-content: space-between;'};
   ${props => props.flexEnd && 'justify-content: flex-end'};
+  ${props => props.justifyCenter && 'justify-content: center'}
   ${props => props.center && 'align-items: center'};
 `;
 

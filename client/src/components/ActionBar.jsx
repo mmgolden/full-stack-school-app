@@ -10,7 +10,7 @@ import Button from './Button';
 
 // Displays action buttons at the top of the page
 const ActionBar = ({
-  authUser, courseOwner, id, deleteCourse,
+  authUser, courseOwner, id, showModal,
 }) => {
   let authUserId;
   let courseOwnerId;
@@ -30,7 +30,7 @@ const ActionBar = ({
               <ActionButton
                 buttonType="button"
                 outline
-                action={deleteCourse}
+                action={showModal}
               >
                 Delete Course
               </ActionButton>
