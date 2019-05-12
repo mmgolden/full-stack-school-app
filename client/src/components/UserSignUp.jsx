@@ -28,6 +28,7 @@ class UserSignUp extends Component {
     const { name, value } = target;
     this.setState({
       [name]: value,
+      error: {},
     });
   };
 
