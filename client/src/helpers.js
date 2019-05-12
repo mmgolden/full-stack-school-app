@@ -8,4 +8,4 @@ export const handleError = (error, props) => {
   }
 };
 
-export const func = () => {};
+export default handleError;
