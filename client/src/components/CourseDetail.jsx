@@ -105,7 +105,7 @@ class CourseDetail extends Component {
           )}
         </Consumer>
         <Container>
-          <CourseGrid>
+          <CourseGrid showCourseDetails={estimatedTime || materialsNeeded}>
             <CourseDescription>
               {/* Course title */}
               <h4>Course</h4>
@@ -120,16 +120,26 @@ class CourseDetail extends Component {
               {/* Course description */}
               {description && <ReactMarkdown>{description}</ReactMarkdown>}
             </CourseDescription>
-            <CourseDetails>
-              {/* Estimated time */}
-              <h4>Estimated Time</h4>
-              <Separator />
-              <h3>{estimatedTime}</h3>
-              {/* Course materials */}
-              <h4>Materials Needed</h4>
-              <Separator />
-              {materialsNeeded && <ReactMarkdown>{materialsNeeded}</ReactMarkdown>}
-            </CourseDetails>
+            {(estimatedTime || materialsNeeded) && (
+              <CourseDetails>
+                {/* Estimated time */}
+                {estimatedTime && (
+                  <>
+                    <h4>Estimated Time</h4>
+                    <Separator />
+                    <h3>{estimatedTime}</h3>
+                  </>
+                )}
+                {/* Course materials */}
+                {materialsNeeded && (
+                  <>
+                    <h4>Materials Needed</h4>
+                    <Separator />
+                    {materialsNeeded && <ReactMarkdown>{materialsNeeded}</ReactMarkdown>}
+                  </>
+                )}
+              </CourseDetails>
+            )}
           </CourseGrid>
         </Container>
       </>
@@ -141,12 +151,12 @@ const CourseGrid = styled.div`
   display: grid;
 
   @media (min-width:768px) {
-    grid-template-columns: 2fr 1fr;
-    grid-column-gap: 30px;
+    ${props => props.showCourseDetails && 'grid-template-columns: 2fr 1fr;'}
+    ${props => props.showCourseDetails && 'grid-column-gap: 30px;'}
   }
 
   @media (min-width: 992px) {
-    grid-template-columns: 3fr 1fr;
+    ${props => props.showCourseDetails && 'grid-template-columns: 3fr 1fr;'}
   }
 `;
 
