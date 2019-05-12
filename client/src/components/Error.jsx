@@ -3,6 +3,7 @@ import styled from 'styled-components';
 
 import theme from '../theme';
 
+// Displays an error message
 const ErrorContainer = ({ children, className }) => (
   <p className={className}>
     {children}

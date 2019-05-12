@@ -24,18 +24,6 @@ class UpdateCourse extends Component {
     error: {},
   };
 
-  // Title input ref
-  titleRef = React.createRef();
-
-  // Description text area ref
-  descRef = React.createRef();
-
-  // Estimate time input ref
-  timeRef = React.createRef();
-
-  // Materials text area ref
-  materialsRef = React.createRef();
-
   // Runs immediately after the component is mounted
   componentDidMount() {
     const { match: { params: { id } } } = this.props;
@@ -114,14 +102,13 @@ class UpdateCourse extends Component {
   }
 
   // Update the state based on user input
-  handleChange = () => {
+  handleChange = (event) => {
+    const { target } = event;
+    const { name, value } = target;
     this.setState({
-      title: this.titleRef.current.value,
-      description: this.descRef.current.value,
-      estimatedTime: this.timeRef.current.value,
-      materialsNeeded: this.materialsRef.current.value,
+      [name]: value,
     });
-  }
+  };
 
   /*
   * Handles the form submission
@@ -167,8 +154,7 @@ class UpdateCourse extends Component {
                     id="title"
                     name="title"
                     type="text"
-                    value={title && title}
-                    ref={this.titleRef}
+                    value={title}
                     onChange={this.handleChange}
                     placeholder="Course title..."
                     aria-label="Title"
@@ -177,8 +163,7 @@ class UpdateCourse extends Component {
                   <textarea
                     id="description"
                     name="description"
-                    value={description && description}
-                    ref={this.descRef}
+                    value={description}
                     onChange={this.handleChange}
                     placeholder="Course description..."
                     aria-label="Description"
@@ -190,8 +175,7 @@ class UpdateCourse extends Component {
                     id="estimatedTime"
                     name="estimatedTime"
                     type="text"
-                    value={estimatedTime && estimatedTime}
-                    ref={this.timeRef}
+                    value={estimatedTime}
                     onChange={this.handleChange}
                     placeholder="Hours"
                     aria-label="Estimated Time"
@@ -200,8 +184,7 @@ class UpdateCourse extends Component {
                   <textarea
                     id="materialsNeeded"
                     name="materialsNeeded"
-                    value={materialsNeeded && materialsNeeded}
-                    ref={this.materialsRef}
+                    value={materialsNeeded}
                     onChange={this.handleChange}
                     placeholder="List materials..."
                     aria-label="Materials Needed"

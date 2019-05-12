@@ -22,18 +22,6 @@ class CreateCourse extends Component {
     error: {},
   };
 
-  // Title input ref
-  titleRef = React.createRef();
-
-  // Description text area ref
-  descRef = React.createRef();
-
-  // Estimate time input ref
-  timeRef = React.createRef();
-
-  // Materials text area ref
-  materialsRef = React.createRef();
-
   /*
   * Creates a new course
   * @param {Object} user - The current user
@@ -71,14 +59,13 @@ class CreateCourse extends Component {
   }
 
   // Update the state based on user input
-  handleChange = () => {
+  handleChange = (event) => {
+    const { target } = event;
+    const { name, value } = target;
     this.setState({
-      title: this.titleRef.current.value,
-      description: this.descRef.current.value,
-      estimatedTime: this.timeRef.current.value,
-      materialsNeeded: this.materialsRef.current.value,
+      [name]: value,
     });
-  }
+  };
 
   /*
   * Handles the form submission
@@ -102,7 +89,9 @@ class CreateCourse extends Component {
   }
 
   render() {
-    const { error } = this.state;
+    const {
+      title, description, estimatedTime, materialsNeeded, error,
+    } = this.state;
     return (
       <>
         <Header {...this.props} />
@@ -125,7 +114,7 @@ class CreateCourse extends Component {
                         type="text"
                         placeholder="Course title..."
                         aria-label="Title"
-                        ref={this.titleRef}
+                        value={title}
                         onChange={this.handleChange}
                       />
                       <p>{user && `By ${user.firstName} ${user.lastName}`}</p>
@@ -134,7 +123,7 @@ class CreateCourse extends Component {
                         name="description"
                         placeholder="Course description..."
                         aria-label="Description"
-                        ref={this.descRef}
+                        value={description}
                         onChange={this.handleChange}
                       />
                     </div>
@@ -146,7 +135,7 @@ class CreateCourse extends Component {
                         type="text"
                         placeholder="Hours"
                         aria-label="Estimated Time"
-                        ref={this.timeRef}
+                        value={estimatedTime}
                         onChange={this.handleChange}
                       />
                       <h4>Materials Needed</h4>
@@ -155,7 +144,7 @@ class CreateCourse extends Component {
                         name="materialsNeeded"
                         placeholder="List materials..."
                         aria-label="Materials Needed"
-                        ref={this.materialsRef}
+                        value={materialsNeeded}
                         onChange={this.handleChange}
                       />
                     </div>

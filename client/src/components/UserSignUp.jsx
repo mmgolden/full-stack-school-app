@@ -22,31 +22,14 @@ class UserSignUp extends Component {
     error: {},
   };
 
-  // First name input ref
-  firstNameRef = React.createRef();
-
-  // Last name input ref
-  lastNameRef = React.createRef();
-
-  // Email address input ref
-  emailRef = React.createRef();
-
-  // Password input ref
-  passwordRef = React.createRef();
-
-  // Confirm password input ref
-  confirmPasswordRef = React.createRef();
-
   // Update the state based on user input
-  handleChange = () => {
+  handleChange = (event) => {
+    const { target } = event;
+    const { name, value } = target;
     this.setState({
-      firstName: this.firstNameRef.current.value,
-      lastName: this.lastNameRef.current.value,
-      emailAddress: this.emailRef.current.value,
-      password: this.passwordRef.current.value,
-      confirmPassword: this.confirmPasswordRef.current.value,
+      [name]: value,
     });
-  }
+  };
 
   signUp = () => {
     const {
@@ -112,7 +95,9 @@ class UserSignUp extends Component {
   }
 
   render() {
-    const { error, differentPasswords } = this.state;
+    const {
+      firstName, lastName, emailAddress, password, confirmPassword, error, differentPasswords,
+    } = this.state;
     return (
       <>
         <Header {...this.props} />
@@ -128,7 +113,7 @@ class UserSignUp extends Component {
                 type="text"
                 placeholder="First Name"
                 aria-label="First Name"
-                ref={this.firstNameRef}
+                value={firstName}
                 onChange={this.handleChange}
               />
               <input
@@ -137,7 +122,7 @@ class UserSignUp extends Component {
                 type="text"
                 placeholder="Last Name"
                 aria-label="Last Name"
-                ref={this.lastNameRef}
+                value={lastName}
                 onChange={this.handleChange}
               />
               <input
@@ -146,7 +131,7 @@ class UserSignUp extends Component {
                 type="text"
                 placeholder="Email Address"
                 aria-label="Email Address"
-                ref={this.emailRef}
+                value={emailAddress}
                 onChange={this.handleChange}
               />
               <input
@@ -155,7 +140,7 @@ class UserSignUp extends Component {
                 type="password"
                 placeholder="Password"
                 aria-label="Password"
-                ref={this.passwordRef}
+                value={password}
                 onChange={this.handleChange}
               />
               <input
@@ -164,7 +149,7 @@ class UserSignUp extends Component {
                 type="password"
                 placeholder="Confirm Password"
                 aria-label="confirmPassword"
-                ref={this.confirmPasswordRef}
+                value={confirmPassword}
                 onChange={this.handleChange}
               />
               <Flex row>

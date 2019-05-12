@@ -16,19 +16,14 @@ class UserSignIn extends Component {
     password: '',
   };
 
-  // Email address input ref
-  emailRef = React.createRef();
-
-  // Password input ref
-  passwordRef = React.createRef();
-
   // Update the state based on user input
-  handleChange = () => {
+  handleChange = (event) => {
+    const { target } = event;
+    const { name, value } = target;
     this.setState({
-      emailAddress: this.emailRef.current.value,
-      password: this.passwordRef.current.value,
+      [name]: value,
     });
-  }
+  };
 
   /*
   * Handles the form submission
@@ -42,6 +37,7 @@ class UserSignIn extends Component {
   }
 
   render() {
+    const { emailAddress, password } = this.state;
     return (
       <Consumer>
         {({ actions }) => (
@@ -57,7 +53,7 @@ class UserSignIn extends Component {
                     type="text"
                     placeholder="Email Address"
                     aria-label="Email Address"
-                    ref={this.emailRef}
+                    value={emailAddress}
                     onChange={this.handleChange}
                   />
                   <input
@@ -66,7 +62,7 @@ class UserSignIn extends Component {
                     type="password"
                     placeholder="Password"
                     aria-label="Password"
-                    ref={this.passwordRef}
+                    value={password}
                     onChange={this.handleChange}
                   />
                   <Flex row>
