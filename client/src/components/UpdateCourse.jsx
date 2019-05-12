@@ -147,7 +147,7 @@ class UpdateCourse extends Component {
 
   render() {
     const {
-      title, description, estimatedTime, materialsNeeded, error, user,
+      courseId, title, description, estimatedTime, materialsNeeded, error, user,
     } = this.state;
     return (
       <>
@@ -209,7 +209,7 @@ class UpdateCourse extends Component {
                 </div>
                 <Flex row>
                   <FormButton buttonType="submit">Update Course</FormButton>
-                  <FormButton buttonType="link" link="/" outline>Cancel</FormButton>
+                  <FormButton buttonType="link" link={`/courses/${courseId}`} outline>Cancel</FormButton>
                 </Flex>
               </FormGrid>
             </form>
