@@ -54,6 +54,50 @@ This project is reviewed and graded based on a set of requirements.
 * React Router is configured so that if a route isn't matched the NotFound component is rendered
 * The app persists user credentials using an HTTP cookie or local storage so that the user's authenticated state is maintained even if the application is reloaded or loaded into a new browser tab
 
+## Seed data: 
+
+* In the api folder, the `seed` folder contains a starting set of data for the database in the form of a JSON file (`data.json`) and a collection of files (`context.js`, `database.js`, and `index.js`) that can be used to create the app's database and populate it with data (we'll explain how to do that below).
+
+## Getting Started
+
+To get up and running with this project, run the following commands from the api folder.
+
+First, install the project's dependencies using `npm`.
+
+```
+npm install
+```
+
+Second, ensure that you have MongoDB installed globally on your system.
+
+* Open a `Command Prompt` (on Windows) or `Terminal` (on Mac OS X) instance and run the command `mongod` (or `sudo mongod`) to start the MongoDB daemon.
+* If that command failed then you’ll need to install MongoDB.
+* [How to Install MongoDB on Windows](http://treehouse.github.io/installation-guides/windows/mongo-windows.html)
+* [How to Install MongoDB on a Mac](http://treehouse.github.io/installation-guides/mac/mongo-mac.html)
+
+Third, seed your MongoDB database with data.
+
+```
+npm run seed
+```
+
+And lastly, start the API.
+
+```
+npm start
+```
+
+Then run the following commands from the client folder.
+
+```
+npm install
+```
+And then start the app.
+
+```
+npm start
+```
+
 ## Available Scripts
 
 In the project directory, you can run:
