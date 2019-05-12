@@ -54,7 +54,7 @@ const ModalBody = styled.div`
   width: 95%;
   max-width: 420px;
   margin: 50px auto auto;
-  padding: 20px 0;
+  padding: 10px 0 20px 0;
   background: #fff;
   border-radius: 0.25em;
   transition: .4s ease-out;
@@ -69,12 +69,13 @@ const ModalBody = styled.div`
     border-top: 1px solid #d0d0d0;
     border-bottom: 1px solid #d0d0d0;
     padding: 30px 20px;
-    margin: 15px 0;
+    margin: 5px 0 15px 0;
   }
 `;
 
 const CloseIcon = styled(FontAwesomeIcon)`
   margin-right: 20px;
+  padding: 10px;
 `;
 
 const DeleteButton = styled(Button)`
