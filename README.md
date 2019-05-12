@@ -54,9 +54,9 @@ This project is reviewed and graded based on a set of requirements.
 * React Router is configured so that if a route isn't matched the NotFound component is rendered
 * The app persists user credentials using an HTTP cookie or local storage so that the user's authenticated state is maintained even if the application is reloaded or loaded into a new browser tab
 
-## Seed data: 
+## Seed Data
 
-* In the api folder, the `seed` folder contains a starting set of data for the database in the form of a JSON file (`data.json`) and a collection of files (`context.js`, `database.js`, and `index.js`) that can be used to create the app's database and populate it with data (we'll explain how to do that below).
+In the api folder, the `seed` folder contains a starting set of data for the database in the form of a JSON file (`data.json`) and a collection of files (`context.js`, `database.js`, and `index.js`) that can be used to create the app's database and populate it with data (we'll explain how to do that below).
 
 ## Getting Started
 
