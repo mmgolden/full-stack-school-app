@@ -4,6 +4,8 @@ const theme = {
   primaryHoverColor: '#004e93',
   primaryFontColor: '#777',
   primaryGradient: 'linear-gradient(160deg, #2a92d3 0%,#1470c0 100%)',
+  errorColor: '#d80a0a',
+  errorHoverColor: '#b70707',
 };
 
 export default theme;
