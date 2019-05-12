@@ -6,13 +6,12 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Consumer } from './Context';
 import theme from '../theme';
 import Container from './Container';
-import Flex from './Flex';
 
 // Displays the top menu bar for the app
 const Header = ({ location }) => (
   <Topbar>
     <Container>
-      <Flex row spaceBetween center>
+      <FlexContainer>
         <Link to="/">
           <Logo>Courses</Logo>
         </Link>
@@ -47,7 +46,7 @@ const Header = ({ location }) => (
             </nav>
           )}
         </Consumer>
-      </Flex>
+      </FlexContainer>
     </Container>
   </Topbar>
 );
@@ -74,13 +73,29 @@ const Topbar = styled.div`
   }
 `;
 
+const FlexContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  @media (min-width:768px) {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+`;
+
 const Logo = styled.h1`
   color: #fff;
   font-size: 1.5rem;
-  margin: 0;
+  margin: 0 0 15px 0;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 3px;
+
+  @media (min-width:768px) {
+    margin: 0;
+  }
 `;
 
 const TopbarIcon = styled(FontAwesomeIcon)`

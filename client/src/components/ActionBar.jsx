@@ -5,7 +5,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import theme from '../theme';
 import Container from './Container';
-import Flex from './Flex';
 import Button from './Button';
 
 // Displays action buttons at the top of the page
@@ -19,7 +18,7 @@ const ActionBar = ({
   return (
     <TopActionBar>
       <Container>
-        <Flex row spaceBetween center>
+        <FlexContainer>
           <BackButton to="/" role="button">
             <BackIcon icon="chevron-left" size="sm" />
           Return to List
@@ -36,7 +35,7 @@ const ActionBar = ({
               </ActionButton>
             </>
           )}
-        </Flex>
+        </FlexContainer>
       </Container>
     </TopActionBar>
   );
@@ -50,13 +49,29 @@ const TopActionBar = styled.div`
   margin-bottom: 30px;
 `;
 
+const FlexContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  @media (min-width:768px) {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+`;
+
 const BackButton = styled(Link)`
-  margin-right: auto;
   color: ${theme.primaryColor};
   transition: color 0.3s;
+  margin: 0 0 10px 0;
 
   &:hover {
     color: ${theme.primaryHoverColor};
+  }
+
+  @media (min-width:768px) {
+    margin: 0 auto 0 0;
   }
 `;
 
@@ -65,7 +80,11 @@ const BackIcon = styled(FontAwesomeIcon)`
 `;
 
 const ActionButton = styled(Button)`
-  margin-left: 15px;
+  margin: 5px 0;
+
+  @media (min-width:768px) {
+    margin: 0 0 0 15px;
+  }
 `;
 
 export default ActionBar;
